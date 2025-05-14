@@ -32,7 +32,7 @@ const Footer = () => {
             {/* Logo and Contact */}
             <div className="mb-6 md:mb-0">
               <Link href="#" className="flex items-center">
-                <Image src="/images/Logo2.png" width={112} height={40} alt="Earthconnlogo" className="object-contain" />
+                <Image src="/images/Logo.png" width={112} height={40} alt="Earthconnlogo" className="object-contain" />
               </Link>
               <div className="flex space-x-4 font-medium mt-4 text-gray-500">
                 <div className="text-2xl text-green-900"><MdAddIcCall /></div>

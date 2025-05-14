@@ -7,6 +7,7 @@ import {
   ModalFooter,
   ModalTrigger,
 } from "../components/ui/animated-modal"; 
+import Image from "next/image";
 
 import { motion } from "motion/react";
 
@@ -25,10 +26,9 @@ export default function ReservationKart() {
           ReservationKart.com
         </h1>
         <p className="text-lg md:text-xl text-gray-300 max-w-4xl mb-8">
-          ReservationKart is a smart and secure travel booking platform designed to simplify your travel experience. Whether you're planning a quick weekend getaway or a long vacation, our portal offers a seamless way to book buses, hotels, flights, and holiday packages – all in one place. Backed by advanced technology and responsive customer support, we ensure that your journey starts smoothly from the moment you book.
+        ReservationKart is a smart and secure travel booking platform designed to simplify your travel experience. Whether you&#39;re planning a quick weekend getaway or a long vacation, our portal offers a seamless way to book buses, hotels, flights, and holiday packages all in one place. Backed by advanced technology and responsive customer support, we ensure that your journey starts smoothly from the moment you book.
+</p>
 
-
-        </p>
       </div>
       
       <div className="flex items-center justify-center mb-8 ">
@@ -68,7 +68,7 @@ export default function ReservationKart() {
                     }}
                     className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
                   >
-                    <img
+                    <Image
                       src={image}
                       alt="bali images"
                       width="500"

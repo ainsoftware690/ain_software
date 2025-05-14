@@ -1,4 +1,4 @@
-import { services } from "@/utils/Images/data";
+
 import About from "./about/page";
 // import Footer from "./components/Footer";
 import { HeroSection } from "./components/HeroSection";

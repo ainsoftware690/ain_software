@@ -9,6 +9,7 @@ import {
   ModalFooter,
   ModalTrigger,
 } from "../components/ui/animated-modal";
+import Image from "next/image";
 
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -78,7 +79,7 @@ export default function ReservationKart() {
                       }}
                       className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
                     >
-                      <img
+                      <Image
                         src={image}
                         alt="bali images"
                         width="500"

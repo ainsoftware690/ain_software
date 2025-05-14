@@ -58,26 +58,21 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
-      setVisible(true);
-    } else {
-      setVisible(false);
-    }
+    setVisible(latest > 100);
   });
 
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
       className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
           ? React.cloneElement(
-              child as React.ReactElement<{ visible?: boolean }>,
+              child as React.ReactElement<{ visible?: boolean }> ,
               { visible },
             )
-          : child,
+          : child
       )}
     </motion.div>
   );
@@ -175,10 +170,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   );
 };
 
-export const MobileNavHeader = ({
-  children,
-  className,
-}: MobileNavHeaderProps) => {
+export const MobileNavHeader = ({ children, className }: MobileNavHeaderProps) => {
   return (
     <div
       className={cn(
@@ -209,6 +201,12 @@ export const MobileNavMenu = ({
             className,
           )}
         >
+          <button
+            onClick={onClose}
+            className="self-end text-black dark:text-white"
+          >
+            <IconX />
+          </button>
           {children}
         </motion.div>
       )}
@@ -236,37 +234,35 @@ export const NavbarLogo = () => {
       href="#"
       className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
-        
       <Image
-        src = "/images/logo.png"
+        src="/images/logo.png"
         className="rounded-full"
         alt="logo"
         width={120}
         height={30}
-       
       />
-      {/* <span className="font-medium text-black dark:text-white">Startup</span> */}
     </Link>
   );
 };
 
-export const NavbarButton = ({
+type NavbarButtonProps<T extends React.ElementType> = {
+  href?: string;
+  as?: T;
+  children: React.ReactNode;
+  className?: string;
+  variant?: "primary" | "secondary" | "dark" | "gradient";
+} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children" | "className" | "variant" | "href">;
+
+export const NavbarButton = <T extends React.ElementType = "a">({
   href,
-  as: Tag = "a",
+  as,
   children,
   className,
   variant = "primary",
   ...props
-}: {
-  href?: string;
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  variant?: "primary" | "secondary" | "dark" | "gradient";
-} & (
-  | React.ComponentPropsWithoutRef<"a">
-  | React.ComponentPropsWithoutRef<"button">
-)) => {
+}: NavbarButtonProps<T>) => {
+  const Tag = as || "a";
+
   const baseStyles =
     "px-4 py-2 rounded-md bg-white button bg-white text-black text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
 
@@ -279,13 +275,13 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
-  return (
-    <Tag
-      href={href || undefined}
-      className={cn(baseStyles, variantStyles[variant], className)}
-      {...props}
-    >
-      {children}
-    </Tag>
+  return React.createElement(
+    Tag,
+    {
+      ...(href && Tag === "a" ? { href } : {}),
+      className: cn(baseStyles, variantStyles[variant], className),
+      ...props,
+    },
+    children
   );
 };

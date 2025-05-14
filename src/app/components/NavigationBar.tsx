@@ -25,14 +25,14 @@ export default function NavigationBar() {
       <div className="sticky top-0 z-40 w-full">
         {/* Desktop Navigation */}
         <div className="relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-sm dark:bg-neutral-950/80 px-4 py-2 lg:flex">
-         <Link href="#">
-          <Image
-            src="/images/logo2.png"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="h-20 w-20 rounded-sm mix-blend-multiply opacity-80"
-          />
+          <Link href="#">
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              width={100}
+              height={100}
+              className="h-20 w-20 rounded-sm mix-blend-multiply opacity-80"
+            />
           </Link>
 
           <NavItems
@@ -42,11 +42,11 @@ export default function NavigationBar() {
           />
 
           <div className="flex items-center gap-4">
-           <Link href="/contact" passHref>
-          <button className="w-40 transform rounded-lg border border-gray-300 px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-900">
-            Contact Us
-          </button>
-        </Link>
+            <Link href="/contact" passHref>
+              <button className="w-40 transform rounded-lg border border-gray-300 px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-900">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
 
