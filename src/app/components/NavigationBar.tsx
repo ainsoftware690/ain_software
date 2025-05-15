@@ -25,7 +25,7 @@ export default function NavigationBar() {
       <div className="sticky top-0 z-40 w-full">
         {/* Desktop Navigation */}
         <div className="relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-sm dark:bg-neutral-950/80 px-4 py-2 lg:flex">
-          <Link href="#">
+          <Link href="/" passHref>
             <Image
               src="/images/logo.png"
               alt="Logo"

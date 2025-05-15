@@ -13,6 +13,8 @@ import CiscoLogo from "../utils/Images/cisco.png";
 import CiscoService from "../utils/Images/cisco-service.png";
 import VmWareLogo from "../utils/Images/vmcare-brand.png";
 import VmWareService from "../utils/Images/vmcare-service.png";
+import CaseStudySlider from "./components/CaseStudy";
+import WhyChooseUs from "./components/WhyChooseUS";
 
 export default function Home() {
   return (
@@ -144,9 +146,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-
         {/* partner section end */}
-      </main>
+        <CaseStudySlider />
+        <WhyChooseUs/> 
+          </main>
     </>
   );
 }
