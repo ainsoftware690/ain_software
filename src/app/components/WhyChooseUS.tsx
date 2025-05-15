@@ -1,6 +1,5 @@
 'use client';
-import Image from 'next/image';
-import { HoverEffect } from './ui/card-hover-effect';
+import { HoverEffect } from './ui/card-hover-effect'; // ✅ only necessary import
 
 const features = [
   {
@@ -33,7 +32,7 @@ export default function WhyChooseUs() {
         <h2 className="text-3xl lg:text-5xl font-bold font-work-sans mb-2">
           Why Choose Us?
         </h2>
-         <div className="w-12 h-[5px] bg-gray-700 mb-6"></div>
+        <div className="w-12 h-[5px] bg-gray-700 mb-6"></div>
       </div>
 
       <HoverEffect
