@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 // import Image from "next/image";
-// import { ReservationImages } from "../../utils/Images";
 import {
   Modal,
   ModalBody,
@@ -22,15 +21,15 @@ export default function ReservationKart() {
     "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
-  return (
+  return ( 
     <div>
-      <div className="w-full bg-black text-white py-12 px-4 md:px-8 lg:px-16 mt-12">
+      <div className="w-full bg-black text-white py-12 px-4 md:px-8 lg:px-16 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             ReservationKart.com
           </h1>
           <div className="flex justify-center mb-10">
-            <hr className="w-48 border-t-5 border-gray-700" />
+            {/* <hr className="w-48 border-t-5 border-gray-700" /> */}
           </div>
           <p className="text-lg md:text-xl text-gray-300 mb-8">
             ReservationKart is a smart and secure travel booking platform
@@ -129,13 +128,13 @@ export default function ReservationKart() {
                 </div>
               </ModalContent>
               <ModalFooter className="gap-4">
-                <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
+                <button className="px-2 py-1 bg-gray-200 font-semibold text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
                   Cancel
                 </button>
 
                 <Link
                   href="tel:+1888579356"
-                  className=" text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28 text-center"
+                  className="text-black dark:text-black text-sm px-2 py-1 font-semibold rounded-md border border-black w-28 text-center"
                 >
                   Call to Book
                 </Link>

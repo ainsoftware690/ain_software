@@ -1,5 +1,5 @@
 'use client';
-import { HoverEffect } from './ui/card-hover-effect'; // ✅ only necessary import
+import { HoverEffect } from './ui/card-hover-effect';
 
 const features = [
   {
@@ -7,21 +7,21 @@ const features = [
     description:
       'At AIN, we promote open communication and teamwork, ensuring that our team is connected to achieve outstanding results.',
     link: '/features/real-time-collaboration',
-    icon: '/Images/Real-Time-Collaboration.svg',
+    icon: '/images/Real-Time-Collaboration.svg',
   },
   {
     title: 'Excellence & Innovation',
     description:
       'Our commitment to quality drives us to innovate continuously, delivering cutting-edge solutions that meet client needs.',
     link: '/features/excellence-innovation',
-    icon: '/Images/Excellence-Innovation.svg',
+    icon: '/images/Excellence-Innovation.svg',
   },
   {
     title: 'Implementation Expertise',
     description:
       'With extensive experience, our professionals ensure efficient project execution, helping clients achieve their goals swiftly.',
     link: '/features/implementation-expertise',
-    icon: '/Images/Implementation-Expertise.svg',
+    icon: '/images/Implementation-Expertise.svg',
   },
 ];
 

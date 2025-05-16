@@ -5,7 +5,7 @@ import { HeroSection } from "./components/HeroSection";
 import React from "react";
 import Image from "next/image";
 import Services from "./services/page";
-import ReservationKart from "./components/ReservationKart";
+ import ReservationKart from "./reservationkart/page";
 import DigitalMarketMart from "./digitalmart/page";
 import DellLogo from "../utils/Images/dell.png";
 import DellService from "../utils/Images/dell-service.png";
@@ -53,7 +53,7 @@ export default function Home() {
         </div>
       </div> */}
         <Services />
-        <ReservationKart />
+        <ReservationKart /> 
         <DigitalMarketMart />
 
         {/* At-a-Glance Section */}

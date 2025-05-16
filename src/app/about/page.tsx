@@ -8,7 +8,7 @@ const words = `AIN Software Solutions, LLC. (AIN), an SBA 8(a) & Economically Di
 
 export default function About() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 mt-4 bg-gray-900">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-8 p-8 py-12 bg-gray-900 overflow-hidden">
      
     
       {/* Text on Left */}
