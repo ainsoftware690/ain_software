@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import LogoImage from "../../utils/Images/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdAddIcCall, MdOutlineMarkEmailRead } from "react-icons/md";
 
@@ -17,7 +18,7 @@ const Footer = () => {
               <Link href="#">
                 <div className="relative w-36 h-14 sm:w-44 sm:h-18 md:w-52 md:h-20">
                   <Image
-                    src="/images/Logo.png"
+                    src={LogoImage}
                     alt="Earthconnlogo"
                     fill
                     className="object-contain object-left rounded-sm "
