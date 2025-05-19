@@ -17,11 +17,13 @@ import CaseStudySlider from "./components/CaseStudy";
 import WhyChooseUs from "./components/WhyChooseUS";
 
 export default function Home() {
-  return (
+  return ( 
     <>
-      <main className="flex flex-col items-center bg-black justify-center min-h-screen p-4">
+      <main className="flex flex-col items-center bg-white justify-center min-h-screen  overflow-hidden">
         <HeroSection />
+        <div className="mt-8">
         <About />
+        </div>
         {/* <Footer /> */}
 
         {/* <Services section></Services> */}
@@ -52,16 +54,23 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-        <Services />
-        <ReservationKart /> 
-        <DigitalMarketMart />
+      <div className="mt-8">
+         <Services />
+      </div>
+          <div className="mt-8">
+             <ReservationKart /> 
+          </div>
+       <div className="mt-8">
+         <DigitalMarketMart />
+       </div>
+       
 
         {/* At-a-Glance Section */}
-        <section className="w-full bg-black py-16 px-4 md:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-left mt-6 mb-4">
+        <section className="w-screen bg-sky-900 py-16 px-4 md:px-8 overflow-hidden mt-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-left pl-4 mt-6 mb-4">
             At-a-Glance
           </h2>
-          <div className="w-12 h-[6px] bg-gray-700 mb-10" />
+          <div className="w-12 h-[6px] mx-4 bg-gray-400 mb-10 " />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Card 1 */}
@@ -93,11 +102,11 @@ export default function Home() {
         {/*  section end*/}
 
         {/* Partner section start */}
-        <section className="w-full bg-black py-16 px-4 md:px-8 text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Partners</h2>
-          <div className="w-12 h-[5px] bg-gray-700 mb-6"></div>
+        <section className="w-screen bg-sky-900 py-16 px-4 md:px-8 text-white overflow-hidden mt-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 mx-4">Our Partners</h2>
+          <div className="w-12 h-[5px] mx-4 bg-gray-400 mb-6"></div>
 
-          <p className="max-w-3xl mb-10 text-xl font-semibold text-gray-300">
+          <p className="max-w-3xl mb-10 text-xl font-semibold mx-4 text-gray-300">
             We are dedicated to form meaningful and trusted partnerships with
             innovative organizations and technology vendors for ensuring the
             success of client missions.

@@ -27,12 +27,12 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full py-12 px-5 md:px-10 bg-[#0A0A0A] text-white">
+    <section className="w-screen py-12 px-5 md:px-10 bg-sky-900 text-white overflow-hidden mt-8">
       <div className="text-4xl md:text-5xl font-bold mb-4">
-        <h2 className="text-3xl lg:text-5xl font-bold font-work-sans mb-2">
+        <h2 className="text-3xl lg:text-5xl font-bold mx-4 font-work-sans mb-2">
           Why Choose Us?
         </h2>
-        <div className="w-12 h-[5px] bg-gray-700 mb-6"></div>
+        <div className="w-12 h-[5px] mx-4 bg-gray-400 mb-6"></div>
       </div>
 
       <HoverEffect

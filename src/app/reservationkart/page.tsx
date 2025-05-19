@@ -23,7 +23,7 @@ export default function ReservationKart() {
   ];
   return ( 
     <div>
-      <div className="w-full bg-black text-white py-12 px-4 md:px-8 lg:px-16 overflow-hidden">
+      <div className="w-screen bg-sky-900 text-white py-12 px-4 md:px-8 lg:px-16 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             ReservationKart.com
@@ -44,7 +44,7 @@ export default function ReservationKart() {
 
         <div className="flex items-center justify-center mb-8 ">
           <Modal>
-            <ModalTrigger className="w-50 bg-black border-1 dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
+            <ModalTrigger className="w-50 bg-gray-800 border-1 dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
               <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
                 Book your flight
               </span>
@@ -56,7 +56,7 @@ export default function ReservationKart() {
               <ModalContent>
                 <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
                   Book your trip{" "}
-                  <span className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 border border-gray-200"></span>{" "}
+                  <span className="px-1 py-0.5 rounded-md bg-gray-400 dark:border-neutral-700 border border-gray-200"></span>{" "}
                   now! ✈️
                 </h4>
                 <div className="flex justify-center items-center">
@@ -76,7 +76,7 @@ export default function ReservationKart() {
                         rotate: 0,
                         zIndex: 100,
                       }}
-                      className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
+                      className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-200 dark:border-neutral-700 border border-neutral-100 shrink-0 overflow-hidden"
                     >
                       <Image
                         src={image}

@@ -5,12 +5,12 @@ import { CardSpotlight } from "../components/ui/card-spotlight";
 
 export default function Services() {
   return (
-    <div className="py-10 px-4 md:px-10 bg-black h-auto text-white">
+    <div className="w-screen py-10 px-4 md:px-10 bg-sky-900 h-auto text-white overflow-hidden">
       <h2 className="text-4xl md:text-5xl font-bold text-center mt-6 mb-4">
         Services
-      </h2>
+      </h2> 
       <div className="flex justify-center mb-10">
-        <hr className="w-48 border-t-5 border-gray-700" />
+        <hr className="w-48 border-t-5 border-gray-400" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center mt-6 ">
         <ServiceCard

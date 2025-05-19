@@ -7,9 +7,9 @@ import { MdAddIcCall, MdOutlineMarkEmailRead } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="w-full h-auto dark:bg-neutral-950/80 overflow-hidden border-t border-gray-700">
+    <div className="w-screen bg-sky-900 overflow-hidden border-t border-gray-700 mt-8">
       {/* Footer Info Section */}
-      <div className="dark:bg-neutral-950/80 bg-black">
+      <div className="dark:bg-neutral-950/80 bg-sky-900">
         <div className="mx-auto px-4 sm:px-6 lg:px-12 py-8">
           <div className="md:flex md:justify-between">
             {/* Logo and Contact */}
@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
               </Link>
 
-              <div className="flex space-x-4 font-medium mt-4 text-gray-500">
+              <div className="flex space-x-4 font-medium mt-4 text-gray-300">
                 <div className="text-2xl text-white">
                   <MdAddIcCall />
                 </div>
@@ -34,7 +34,7 @@ const Footer = () => {
                   <p>+9100000000 / +9100000000</p>
                 </div>
               </div>
-              <div className="flex space-x-4 my-4 text-gray-500">
+              <div className="flex space-x-4 my-4 text-gray-300">
                 <div className="text-2xl text-white">
                   <MdOutlineMarkEmailRead />
                 </div>
@@ -47,7 +47,7 @@ const Footer = () => {
                   </Link>
                 </div>
               </div>
-              <div className="flex space-x-4 mb-3 text-gray-500">
+              <div className="flex space-x-4 mb-3 text-gray-300">
                 <div className="text-2xl text-white">
                   <FaLocationDot />
                 </div>
@@ -66,7 +66,7 @@ const Footer = () => {
                 <h2 className="mb-6 text-sm font-semibold text-white uppercase">
                   Link
                 </h2>
-                <ul className="text-gray-500 font-medium">
+                <ul className="text-gray-300 font-medium">
                    <li className="mb-4">
                     <Link href="/" className="hover:underline">
                       Home
@@ -93,7 +93,7 @@ const Footer = () => {
                 <h2 className="mb-6 text-sm font-semibold text-white uppercase">
                   Follow us
                 </h2>
-                <ul className="text-gray-500 font-medium">
+                <ul className="text-gray-300 font-medium">
                   <li className="mb-4">
                     <Link
                       href="https://www.instagram.com/blue_star_motors/?igshid=MzRlODBiNWFlZA%3D"
@@ -125,7 +125,7 @@ const Footer = () => {
                 <h2 className="mb-6 text-sm font-semibold text-white uppercase">
                   Legal
                 </h2>
-                <ul className="text-gray-500 font-medium">
+                <ul className="text-gray-300 font-medium">
                   <li className="mb-4">
                     <Link href="/Privacy-Policy" className="hover:underline">
                       Privacy Policy
@@ -144,7 +144,7 @@ const Footer = () => {
           {/* Bottom Footer */}
           <hr className="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
-            <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            <span className="text-sm text-gray-300 sm:text-center dark:text-gray-400">
               © 2025{" "}
               <Link href="#" className="hover:underline">
                 Earthconntravels
@@ -156,7 +156,7 @@ const Footer = () => {
                 <Link
                   href="https://www.facebook.com/people/Mudassar-Shaikh/100083367522006/?mibextid=ZbWKwL"
                   target="_blank"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 >
                   <svg
                     className="w-4 h-4"
@@ -175,7 +175,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
                 >
                   <svg
                     className="w-4 h-4"
@@ -190,7 +190,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
                 >
                   <svg
                     className="w-4 h-4"
@@ -209,7 +209,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href="#"
-                  className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
                 >
                   <svg
                     className="w-4 h-4"
