@@ -36,7 +36,7 @@ export default function CaseStudySlider() {
   const slide = slides[currentSlide];
 
   return (
-    <div className="w-screen bg-sky-900 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8 p-8 py-12 mt-8 overflow-hidden">
+    <div className="w-screen bg-sky-900 px-8 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8 p-8 py-12 mt-8 overflow-hidden">
     
     <div className="flex flex-col items-center w-full max-w-[1240px] mx-auto relative mt-12 mb-12 ">
       <div className="flex flex-row items-center w-full flex-wrap lg:flex-nowrap gap-10">

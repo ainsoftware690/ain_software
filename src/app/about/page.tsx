@@ -9,7 +9,7 @@ const words = `DIGITALMARKETKART and AINSOFTWARE SOLUTIONS (OPC) PVT LTD operate
 export default function About() {
   return (
 
-    <div className=" w-screen bg-sky-900 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8 p-8 py-12  overflow-hidden">
+    <div className=" w-screen bg-sky-900 px-7 md:px-14 flex flex-col md:flex-row items-center justify-between gap-6 p-8 py-12  overflow-hidden">
      
     
       {/* Text on Left */}

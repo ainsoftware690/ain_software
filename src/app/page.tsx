@@ -66,7 +66,7 @@ export default function Home() {
        
 
         {/* At-a-Glance Section */}
-        <section className="w-screen bg-sky-900 py-16 px-4 md:px-8 overflow-hidden mt-8">
+        <section className="w-screen bg-sky-900 py-16 px-8 md:px-16 overflow-hidden mt-8">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-left pl-4 mt-6 mb-4">
             At-a-Glance
           </h2>
@@ -102,7 +102,7 @@ export default function Home() {
         {/*  section end*/}
 
         {/* Partner section start */}
-        <section className="w-screen bg-sky-900 py-16 px-4 md:px-8 text-white overflow-hidden mt-8">
+        <section className="w-screen bg-sky-900 py-16 px-8 md:px-16 text-white overflow-hidden mt-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 mx-4">Our Partners</h2>
           <div className="w-12 h-[5px] mx-4 bg-gray-400 mb-6"></div>
 

@@ -5,7 +5,7 @@ import { CardSpotlight } from "../components/ui/card-spotlight";
 
 export default function Services() {
   return (
-    <div className="w-screen py-10 px-4 md:px-10 bg-sky-900 h-auto text-white overflow-hidden">
+    <div className="w-screen py-10 px-8 md:px-16 bg-sky-900 h-auto text-white overflow-hidden">
       <h2 className="text-4xl md:text-5xl font-bold text-center mt-6 mb-4">
         Services
       </h2> 

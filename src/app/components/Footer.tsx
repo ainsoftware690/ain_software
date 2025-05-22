@@ -11,7 +11,7 @@ const Footer = () => {
     <div className="w-screen bg-sky-900 overflow-hidden border-t border-gray-700 mt-8">
       {/* Footer Info Section */}
       <div className="dark:bg-neutral-950/80 bg-sky-900">
-        <div className="mx-auto px-4 sm:px-6 lg:px-12 py-8">
+        <div className="mx-auto px-8 md:px-16 py-8">
           <div className="md:flex md:justify-between">
             {/* Logo and Contact */}
             <div className="mb-6 md:mb-0">

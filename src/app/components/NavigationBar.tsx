@@ -33,7 +33,7 @@ export default function NavigationBar() {
   return (
     <div className="sticky top-0 z-40 w-full bg-gray-900 text-white">
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center justify-between px-6 py-3">
+      <div className="hidden lg:flex items-center justify-between mx-12 py-3">
         <Link href="/">
           <Image src="/images/logo.png" alt="Logo" width={100} height={100} className="h-20 w-20 rounded" priority />
         </Link>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const DigitalMarketMart: React.FC = () => {
   return (
-    <section className="w-screen bg-sky-900 text-white py-12 px-4 md:px-8 lg:px-16 overflow-hidden">
+    <section className="w-screen bg-sky-900 text-white py-12 px-8 md:px-16 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
           DigitalMarketMart
