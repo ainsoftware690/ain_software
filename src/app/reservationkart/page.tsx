@@ -9,12 +9,19 @@ import {
   ModalTrigger,
 } from "../components/ui/animated-modal";
 import Image from "next/image";
+// import ReservationImg1 from "../../utils/Images/reservation1.png";
+// import ReservationImg2 from "../../utils/Images/reservation2.png";
+// import ReservationImg3 from "../../utils/Images/reservation3.png";
+// import ReservationImg4 from "../../utils/Images/reservation4.png";
+// import ReservationImg5 from "../../utils/Images/reservation5.png";
+
 
 import { motion } from "motion/react";
 import Link from "next/link";
 
 export default function ReservationKart() {
   const images = [
+  
     "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -47,7 +54,7 @@ export default function ReservationKart() {
             <ModalTrigger className="w-50 bg-gray-800 border-1 dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
               <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
                 Book your flight
-              </span>
+              </span> 
               <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
                 ✈️
               </div>
