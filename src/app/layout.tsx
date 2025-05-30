@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+        <link rel="icon" href="/images/logo.png" type="website-icon" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
@@ -34,3 +34,4 @@ export default function RootLayout({
     </html>
   );
 }
+ 

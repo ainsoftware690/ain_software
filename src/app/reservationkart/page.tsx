@@ -15,20 +15,18 @@ import Image from "next/image";
 // import ReservationImg4 from "../../utils/Images/reservation4.png";
 // import ReservationImg5 from "../../utils/Images/reservation5.png";
 
-
 import { motion } from "motion/react";
 import Link from "next/link";
 
 export default function ReservationKart() {
   const images = [
-  
     "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
-  return ( 
+  return (
     <div>
       <div className="w-screen bg-sky-900 text-white py-12 px-4 md:px-8 lg:px-16 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center">
@@ -54,7 +52,7 @@ export default function ReservationKart() {
             <ModalTrigger className="w-50 bg-gray-800 border-1 dark:bg-white dark:text-black text-white flex justify-center group/modal-btn">
               <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
                 Book your flight
-              </span> 
+              </span>
               <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
                 ✈️
               </div>
@@ -138,13 +136,12 @@ export default function ReservationKart() {
                 <button className="px-2 py-1 bg-gray-200 font-semibold text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
                   Cancel
                 </button>
-
-                <Link
+                <a
                   href="tel:+1888579356"
                   className="text-black dark:text-black text-sm px-2 py-1 font-semibold rounded-md border border-black w-28 text-center"
                 >
                   Call to Book
-                </Link>
+                </a>
               </ModalFooter>
             </ModalBody>
           </Modal>
