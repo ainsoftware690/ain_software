@@ -16,7 +16,6 @@ import Image from "next/image";
 // import ReservationImg5 from "../../utils/Images/reservation5.png";
 
 import { motion } from "motion/react";
-import Link from "next/link";
 
 export default function ReservationKart() {
   const images = [
