@@ -11,14 +11,18 @@ export default function Contact() {
     type_of_service: '',
     message: '',
   });
+
   const router = useRouter();
 
-  const handleChange = (e: any) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -37,7 +41,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
         <p className="mb-8 text-lg">
-          Fill out the form below and we'll get back to you as soon as we can.
+          Fill out the form below and we&apos;ll get back to you as soon as we can.
         </p>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -53,7 +57,7 @@ export default function Contact() {
                 required
                 value={form.type_of_service}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg text-gray-400  outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-400 outline-none"
               >
                 <option value="">Select</option>
                 <option value="Enterprise Services">Enterprise Services</option>
@@ -76,7 +80,7 @@ export default function Contact() {
                 required
                 value={form.full_name}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200  outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200 outline-none"
               />
             </div>
 
@@ -92,7 +96,7 @@ export default function Contact() {
                 required
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200  outline-none"
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200 outline-none"
               />
             </div>
 

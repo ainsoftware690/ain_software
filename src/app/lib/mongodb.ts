@@ -1,3 +1,4 @@
+// ./src/app/lib/mongodb.ts
 import { MongoClient } from 'mongodb';
 
 if (!process.env.MONGODB_URI) {
@@ -12,7 +13,9 @@ let clientPromise: Promise<MongoClient>;
 
 declare global {
   // Allow global variable reuse in development
-  var _mongoClientPromise: Promise<MongoClient>;
+  // Use `let` to satisfy ESLint rule
+  // Add the globalThis property type properly
+  var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
 if (process.env.NODE_ENV === 'development') {
