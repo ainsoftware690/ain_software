@@ -1,28 +1,59 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ArrowRight } from 'lucide-react';
 
-const Contact: React.FC = () => {
+export default function Contact() {
+  const [form, setForm] = useState({
+    full_name: '',
+    email: '',
+    type_of_service: '',
+    message: '',
+  });
+  const router = useRouter();
+
+  const handleChange = (e: any) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      router.push('/thankyou');
+    } else {
+      alert('Something went wrong!');
+    }
+  };
+
   return (
-    <section className="py-12 px-4 bg-sky-900 sm:px-6 lg:px-8 ">
+    <section className="p-10 bg-sky-900 text-white min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-bold text-white mb-2">Get in Touch</h2>
-        <div className="w-20 h-1 bg-blue-600 mb-4"></div>
-        <p className="text-white mb-10">
-          Fill out the form below and we&apos;ll get back to you as soon as we can.
+        <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
+        <p className="mb-8 text-lg">
+          Fill out the form below and we'll get back to you as soon as we can.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Left: Contact Form */}
-          <form className="space-y-6" method="POST">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left: Form */}
+          <form onSubmit={handleSubmit} className="w-full lg:w-1/2 space-y-6">
             <div>
-              <label className="block mb-1 text-md font-bold text-white">
+              <label htmlFor="type_of_service" className="block mb-1">
                 Type of Service <span className="text-red-500">*</span>
               </label>
               <select
+                id="type_of_service"
                 name="type_of_service"
                 required
-                className="w-full border text-gray-400 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2"
+                value={form.type_of_service}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-400  outline-none"
               >
                 <option value="">Select</option>
                 <option value="Enterprise Services">Enterprise Services</option>
@@ -32,75 +63,75 @@ const Contact: React.FC = () => {
                 <option value="Other">Other</option>
               </select>
             </div>
+
             <div>
-             
-              <label className="block mb-1 text-md font-bold text-white ">Full Name</label>
+              <label htmlFor="full_name" className="block mb-1">
+                Full Name
+              </label>
               <input
                 type="text"
                 name="full_name"
+                id="full_name"
                 placeholder="Enter Full Name"
-                className="w-full border text-sm text-gray-400 border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2"
+                required
+                value={form.full_name}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200  outline-none"
               />
             </div>
 
             <div>
-              <label className="block mb-1 text-md font-bold text-white">
+              <label htmlFor="email" className="block mb-1">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Enter Email"
                 required
-                className="w-full border text-gray-400 text-sm border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.email}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200  outline-none"
               />
             </div>
 
             <div>
-              <label className="block mb-1 text-md font-bold text-white">
+              <label htmlFor="message" className="block mb-1">
                 Tell us more about your project or company
               </label>
               <textarea
                 name="message"
-                rows={6}
+                id="message"
+                rows={4}
                 placeholder="Type here..."
-                className="w-full border text-gray-400 text-sm border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={form.message}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg text-gray-200 outline-none"
               />
             </div>
 
-            <div>
-              <button
-                type="submit"
-                className="inline-flex items-center px-6 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg focus:outline-none"
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 448 512"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
-                </svg>
-                Submit
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md flex items-center gap-2"
+            >
+              <ArrowRight size={18} /> Submit
+            </button>
           </form>
 
-          {/* Right: Google Map */}
-          <div className="w-full h-full">
-
+          {/* Right: Map */}
+          <div className="w-full lg:w-1/2 min-h-[400px] rounded-md overflow-hidden border-2 border-white">
             <iframe
-             className="w-full h-full min-h-[400px] rounded-lg border"
-             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.16342316556!2d-77.73743122513844!3d39.64603650218744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c9ed5ac0b9c957%3A0x1fdec20a030709e8!2s30%20Summer%20St%2C%20Hagerstown%2C%20MD%2021740%2C%20USA!5e0!3m2!1sen!2sin!4v1747666391814!5m2!1sen!2sin" 
-             loading="lazy"
-              title= "30 Summer St, Hagerstown, MD 21740, USA"
-              aria-label= "30 Summer St, Hagerstown, MD 21740, USA">
-             </iframe>
+              className="w-full h-full"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.16342316556!2d-77.73743122513844!3d39.64603650218744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c9ed5ac0b9c957%3A0x1fdec20a030709e8!2s30%20Summer%20St%2C%20Hagerstown%2C%20MD%2021740%2C%20USA!5e0!3m2!1sen!2sin!4v1747666391814!5m2!1sen!2sin"
+              loading="lazy"
+              allowFullScreen
+              title="Map - 30 Summer St"
+              aria-label="Google Map"
+            />
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}

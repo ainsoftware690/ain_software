@@ -15,14 +15,22 @@ const navItems = [
     ],
   },
   { name: "Services", link: "/services" },
-  { name: "ReservationKart.com", link: "/reservationkart" },
-  { name: "DigitalMarketMart.com", link: "/digitalmart" },
+  {
+    name: "ReservationKart.com",
+    link: "/reservationkart",
+    // logo: "/images/reservationkart_logo.webp",
+  },
+  {
+    name: "DigitalMarketMart.com",
+    link: "/digitalmart",
+    // logo: "/images/reservationkart_logo.webp",
+  },
 ];
 
 export default function NavigationBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false); // for mobile
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
 
   const handleItemClick = () => {
     setIsMobileMenuOpen(false);
@@ -31,14 +39,23 @@ export default function NavigationBar() {
   };
 
   return (
-    <div className="sticky top-0 z-40 w-full bg-gray-900 text-white">
+    <div className="sticky top-0 z-40 w-full bg-gray-900 text-white shadow-md">
       {/* Desktop Navigation */}
-      <div className="hidden lg:flex items-center justify-between mx-12 py-3">
+      <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto py-3 px-6">
+        {/* Logo */}
         <Link href="/">
-          <Image src="/images/logo.png" alt="Logo" width={100} height={100} className="h-20 w-20 rounded" priority />
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={80}
+            height={80}
+            className="h-16 w-16 rounded"
+            priority
+          />
         </Link>
 
-        <div className="flex space-x-6 text-lg font-medium">
+        {/* Menu */}
+        <div className="flex space-x-6 text-base font-medium items-center">
           {navItems.map((item) =>
             item.submenu ? (
               <div key={item.name} className="relative">
@@ -46,19 +63,24 @@ export default function NavigationBar() {
                   onClick={() =>
                     setActiveDropdown(activeDropdown === item.name ? null : item.name)
                   }
-                  className="flex items-center gap-1 hover:text-white"
+                  className="flex items-center gap-1 hover:text-gray-300"
                 >
                   {item.name}
-                  <IconChevronDown size={16} className={`${activeDropdown === item.name ? "rotate-180" : ""} transition`} />
+                  <IconChevronDown
+                    size={16}
+                    className={`transition-transform ${
+                      activeDropdown === item.name ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
                 {activeDropdown === item.name && (
-                  <div className="absolute left-0 mt-2 w-40 rounded-md bg-gray-800 shadow-lg z-50">
+                  <div className="absolute left-0 mt-2 w-48 rounded-md bg-gray-800 shadow-lg z-50">
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.name}
                         href={subItem.link}
-                        className="block px-4 py-2 text-sm hover:bg-gray-700"
                         onClick={handleItemClick}
+                        className="block px-4 py-2 text-sm hover:bg-gray-700"
                       >
                         {subItem.name}
                       </Link>
@@ -67,21 +89,32 @@ export default function NavigationBar() {
                 )}
               </div>
             ) : (
-              <Link
-                key={item.name}
-                href={item.link}
-                className="hover:text-white"
-                onClick={handleItemClick}
-              >
-                {item.name}
-              </Link>
+              <div key={item.name} className="flex flex-col items-center">
+                <Link
+                  href={item.link}
+                  onClick={handleItemClick}
+                  className="hover:text-gray-300"
+                >
+                  {item.name}
+                </Link>
+                {/* {item.logo && (
+                  <Image
+                    src={item.logo}
+                    alt={`${item.name} logo`}
+                    width={100}
+                    height={100}
+                    className="mt-1"
+                  />
+                )} */}
+              </div>
             )
           )}
         </div>
 
+        {/* Contact Button */}
         <Link
           href="/contact"
-          className="w-40 text-center rounded-lg border border-gray-300 px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800"
+          className="ml-6 rounded-lg border border-white px-6 py-2 font-medium hover:bg-gray-800 transition"
         >
           Contact Us
         </Link>
@@ -91,7 +124,14 @@ export default function NavigationBar() {
       <div className="lg:hidden px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <Image src="/images/logo.png" alt="Logo" width={60} height={60} className="h-14 w-14 rounded" priority />
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              width={60}
+              height={60}
+              className="h-14 w-14 rounded"
+              priority
+            />
           </Link>
           <button
             className="text-white p-2"
@@ -104,16 +144,23 @@ export default function NavigationBar() {
 
         {isMobileMenuOpen && (
           <div className="mt-4 rounded-lg bg-gray-900 px-4 py-6 shadow-md">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {navItems.map((item) =>
                 item.submenu ? (
                   <div key={item.name}>
                     <button
                       className="flex w-full items-center justify-between px-4 py-2 rounded hover:bg-gray-700"
-                      onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+                      onClick={() =>
+                        setIsAboutDropdownOpen((prev) => !prev)
+                      }
                     >
                       <span>{item.name}</span>
-                      <IconChevronDown size={18} className={`${isAboutDropdownOpen ? "rotate-180" : ""} transition`} />
+                      <IconChevronDown
+                        size={18}
+                        className={`transition-transform ${
+                          isAboutDropdownOpen ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
                     {isAboutDropdownOpen && (
                       <div className="ml-4 mt-1 space-y-1">
@@ -131,14 +178,27 @@ export default function NavigationBar() {
                     )}
                   </div>
                 ) : (
-                  <Link
+                  <div
                     key={item.name}
-                    href={item.link}
-                    onClick={handleItemClick}
-                    className="block px-4 py-2 rounded hover:bg-gray-700"
+                    className="flex flex-col items-start px-4 py-2"
                   >
-                    {item.name}
-                  </Link>
+                    <Link
+                      href={item.link}
+                      onClick={handleItemClick}
+                      className="hover:text-white"
+                    >
+                      {item.name}
+                    </Link>
+                    {/* {item.logo && (
+                      <Image
+                        src={item.logo}
+                        alt={`${item.name} logo`}
+                        width={28}
+                        height={28}
+                        className="mt-1"
+                      />
+                    )} */}
+                  </div>
                 )
               )}
               <Link

@@ -54,8 +54,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p>
-                    Address here <br />
-                    Pune, Maharashtra - 411048, India.
+                    Head office - 30 Summer St Hagerstown MD, 21740 
                   </p>
                 </div>
               </div>
