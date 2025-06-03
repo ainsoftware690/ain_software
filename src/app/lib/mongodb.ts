@@ -1,15 +1,17 @@
-import { MongoClient } from "mongodb";
+// lib/mongodb.ts
+
+import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
-
-if (!uri) {
-  throw new Error("Please define the MONGODB_URI environment variable in .env.local");
-}
-
 const options = {
-  tls: true,
+  tls: true, // Optional: only use if your cluster requires TLS (Atlas usually does)
 };
 
+if (!uri) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+}
+
+// Use a global variable to preserve value across hot reloads in development
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
 
@@ -17,13 +19,14 @@ const globalWithMongo = globalThis as typeof globalThis & {
   _mongoClientPromise?: Promise<MongoClient>;
 };
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   if (!globalWithMongo._mongoClientPromise) {
     client = new MongoClient(uri, options);
     globalWithMongo._mongoClientPromise = client.connect();
   }
   clientPromise = globalWithMongo._mongoClientPromise;
 } else {
+  // In production, create a new client every time (Vercel edge/serverless best practice)
   client = new MongoClient(uri, options);
   clientPromise = client.connect();
 }
