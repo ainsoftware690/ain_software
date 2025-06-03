@@ -32,7 +32,7 @@ const Footer = () => {
                   <MdAddIcCall />
                 </div>
                 <div>
-                  <p>+9100000000 / +9100000000</p>
+                  <p> +1(888) 206-5831</p>
                 </div>
               </div>
               <div className="flex space-x-4 my-4 text-gray-300">
