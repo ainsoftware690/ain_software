@@ -6,7 +6,7 @@ import React from "react";
 import Image from "next/image";
 import Services from "./services/page";
  import ReservationKart from "./reservationkart/page";
-import DigitalMarketMart from "./digitalmart/page";
+// import DigitalMarketMart from "./digitalmart/page";
 import DellLogo from "../utils/Images/dell.png";
 import DellService from "../utils/Images/dell-service.png";
 import CiscoLogo from "../utils/Images/cisco.png";
@@ -60,9 +60,9 @@ export default function Home() {
           <div className="mt-8">
              <ReservationKart /> 
           </div>
-       <div className="mt-8">
+       {/* <div className="mt-8">
          <DigitalMarketMart />
-       </div>
+       </div> */}
        
 
         {/* At-a-Glance Section */}

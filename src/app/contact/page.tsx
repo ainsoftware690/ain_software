@@ -114,7 +114,7 @@ export default function Contact() {
                 className="w-full p-3 border border-gray-300 rounded-lg text-gray-200 outline-none"
               />
             </div>
-
+            
             <button
               type="submit"
               className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md flex items-center gap-2"

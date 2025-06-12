@@ -8,11 +8,11 @@ export default function Services() {
     <div className="w-screen py-10 px-8 md:px-16 bg-sky-900 h-auto text-white overflow-hidden">
       <h2 className="text-4xl md:text-5xl font-bold text-center mt-6 mb-4">
         Services
-      </h2> 
+      </h2>
       <div className="flex justify-center mb-10">
         <hr className="w-48 border-t-5 border-gray-400" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center mt-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center mt-6">
         <ServiceCard
           number="01"
           title="Product Development"
@@ -43,18 +43,21 @@ function ServiceCard({
   description: string;
 }) {
   return (
-    <CardSpotlight className=" bg-[#111] rounded-lg p-6 h-auto shadow-md hover:shadow-blue-500/30 transition-shadow">
-      <div className="flex items-center mb-6">
-        <div className="bg-blue-600 text-white font-bold w-18 h-18 flex items-center justify-center rounded-md text-xl">
-          {number}
+    <CardSpotlight className="rounded-lg h-full shadow-md hover:shadow-blue-500/30 transition-shadow flex flex-col justify-between">
+      <div>
+        <div className="flex items-center mb-6">
+          <div className="bg-blue-600 text-white font-bold w-12 h-12 flex items-center justify-center rounded-md text-xl">
+            {number}
+          </div>
         </div>
+        <h3 className="text-2xl font-semibold mb-4">{title}</h3>
+        <p className="text-neutral-300 text-md mb-6">{description}</p>
       </div>
-      <h3 className="text-2xl font-semibold mb-4">{title}</h3>
-      <p className="text-neutral-300 text-md mb-6">{description}</p>
-      <Link href="/services">
-        <button className="mt-auto bg-transparent border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition-all text-sm">
-          Contact Ain →
-        </button>
+      <Link
+        href="/contact"
+        className="inline-block mt-auto bg-transparent border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-black transition-all text-sm"
+      >
+        Contact Ain →
       </Link>
     </CardSpotlight>
   );

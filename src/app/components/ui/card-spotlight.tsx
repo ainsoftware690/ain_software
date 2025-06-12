@@ -36,7 +36,7 @@ export const CardSpotlight = ({
   return (
     <div
       className={cn(
-        "group/spotlight p-10 rounded-md relative border border-neutral-800 bg-black dark:border-neutral-800",
+        "group/spotlight relative border border-neutral-800 bg-black dark:border-neutral-800 overflow-hidden",
         className
       )}
       onMouseMove={handleMouseMove}
@@ -44,8 +44,9 @@ export const CardSpotlight = ({
       onMouseLeave={handleMouseLeave}
       {...props}
     >
+      {/* Spotlight animation - placed at lower z-index */}
       <motion.div
-        className="pointer-events-none absolute z-0 -inset-px rounded-md opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
+        className="pointer-events-none absolute z-0 inset-0 transition duration-300 opacity-0 group-hover/spotlight:opacity-100"
         style={{
           backgroundColor: color,
           maskImage: useMotionTemplate`
@@ -69,7 +70,11 @@ export const CardSpotlight = ({
           />
         )}
       </motion.div>
-      {children}
+
+      {/* Content rendered above animation layer */}
+      <div className="relative z-10 p-6">
+        {children}
+      </div>
     </div>
   );
 };

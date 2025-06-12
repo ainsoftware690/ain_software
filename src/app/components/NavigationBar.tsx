@@ -17,13 +17,7 @@ const navItems = [
   { name: "Services", link: "/services" },
   {
     name: "ReservationKart.com",
-    link: "/reservationkart",
-    // logo: "/images/reservationkart_logo.webp",
-  },
-  {
-    name: "DigitalMarketMart.com",
-    link: "/digitalmart",
-    // logo: "/images/reservationkart_logo.webp",
+    link: "https://reservationkart.com",
   },
 ];
 
@@ -42,7 +36,6 @@ export default function NavigationBar() {
     <div className="sticky top-0 z-40 w-full bg-gray-900 text-white shadow-md">
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto py-3 px-6">
-        {/* Logo */}
         <Link href="/">
           <Image
             src="/images/logo.png"
@@ -54,7 +47,6 @@ export default function NavigationBar() {
           />
         </Link>
 
-        {/* Menu */}
         <div className="flex space-x-6 text-base font-medium items-center">
           {navItems.map((item) =>
             item.submenu ? (
@@ -90,28 +82,29 @@ export default function NavigationBar() {
               </div>
             ) : (
               <div key={item.name} className="flex flex-col items-center">
-                <Link
-                  href={item.link}
-                  onClick={handleItemClick}
-                  className="hover:text-gray-300"
-                >
-                  {item.name}
-                </Link>
-                {/* {item.logo && (
-                  <Image
-                    src={item.logo}
-                    alt={`${item.name} logo`}
-                    width={100}
-                    height={100}
-                    className="mt-1"
-                  />
-                )} */}
+                {item.link.startsWith("http") ? (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-300"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.link}
+                    onClick={handleItemClick}
+                    className="hover:text-gray-300"
+                  >
+                    {item.name}
+                  </Link>
+                )}
               </div>
             )
           )}
         </div>
 
-        {/* Contact Button */}
         <Link
           href="/contact"
           className="ml-6 rounded-lg border border-white px-6 py-2 font-medium hover:bg-gray-800 transition"
@@ -150,9 +143,7 @@ export default function NavigationBar() {
                   <div key={item.name}>
                     <button
                       className="flex w-full items-center justify-between px-4 py-2 rounded hover:bg-gray-700"
-                      onClick={() =>
-                        setIsAboutDropdownOpen((prev) => !prev)
-                      }
+                      onClick={() => setIsAboutDropdownOpen((prev) => !prev)}
                     >
                       <span>{item.name}</span>
                       <IconChevronDown
@@ -182,22 +173,24 @@ export default function NavigationBar() {
                     key={item.name}
                     className="flex flex-col items-start px-4 py-2"
                   >
-                    <Link
-                      href={item.link}
-                      onClick={handleItemClick}
-                      className="hover:text-white"
-                    >
-                      {item.name}
-                    </Link>
-                    {/* {item.logo && (
-                      <Image
-                        src={item.logo}
-                        alt={`${item.name} logo`}
-                        width={28}
-                        height={28}
-                        className="mt-1"
-                      />
-                    )} */}
+                    {item.link.startsWith("http") ? (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.link}
+                        onClick={handleItemClick}
+                        className="hover:text-white"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
                   </div>
                 )
               )}
