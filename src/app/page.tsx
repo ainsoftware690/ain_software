@@ -15,6 +15,7 @@ import VmWareLogo from "../utils/Images/vmcare-brand.png";
 import VmWareService from "../utils/Images/vmcare-service.png";
 import CaseStudySlider from "./components/CaseStudy";
 import WhyChooseUs from "./components/WhyChooseUS";
+import AtAGlanceSection from "./components/At-glance";
 
 export default function Home() {
   return ( 
@@ -66,22 +67,21 @@ export default function Home() {
        
 
         {/* At-a-Glance Section */}
-        <section className="w-screen bg-sky-900 py-16 px-8 md:px-16 overflow-hidden mt-8">
+        {/* <section className="w-screen bg-sky-900 py-16 px-8 md:px-16 overflow-hidden mt-8">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-left pl-4 mt-6 mb-4">
             At-a-Glance
           </h2>
           <div className="w-12 h-[6px] mx-4 bg-gray-400 mb-10 " />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"> */}
             {/* Card 1 */}
-            <div className="bg-[#121212] rounded-xl shadow-md p-8 flex flex-col items-center justify-center text-white min-h-[180px]">
+            {/* <div className="bg-[#121212] rounded-xl shadow-md p-8 flex flex-col items-center justify-center text-white min-h-[180px]">
               <h2 className="text-5xl font-extrabold mb-4">50+</h2>
               <p className="text-center text-lg font-semibold text-gray-300">
                 In house creative minds
               </p>
             </div>
 
-            {/* Card 2 */}
             <div className="bg-[#121212] rounded-xl shadow-md p-8 flex flex-col items-center justify-center text-white min-h-[180px]">
               <h2 className="text-5xl font-extrabold mb-4">5+</h2>
               <p className="text-center text-lg font-semibold text-gray-300">
@@ -89,17 +89,17 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Card 3 */}
             <div className="bg-[#121212] rounded-xl shadow-md p-8 flex flex-col items-center justify-center text-white min-h-[180px]">
               <h2 className="text-5xl font-extrabold mb-4">5+</h2>
               <p className="text-center text-lg font-semibold text-gray-300">
                 Clients around the world
               </p>
-            </div>
-          </div>
-        </section>
+            </div> 
+           </div>
+        </section> */}
 
-        {/*  section end*/}
+         {/* section end */}
+         <AtAGlanceSection />
 
         {/* Partner section start */}
         <section className="w-screen bg-sky-900 py-16 px-8 md:px-16 text-white overflow-hidden mt-8">

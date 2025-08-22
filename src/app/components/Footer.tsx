@@ -142,6 +142,7 @@ const Footer = () => {
           {/* Bottom Footer */}
           <hr className="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
+            <span className=" text-sm text-gray-300  dark:text-gray-400 block mt-1">UEI SAM: RYUJXHF9W6B9 &nbsp;  &nbsp; CAGE: 9KL56</span>
             <span className="text-sm text-gray-300 sm:text-center dark:text-gray-400">
               © 2025{" "}
               <Link href="#" className="hover:underline">

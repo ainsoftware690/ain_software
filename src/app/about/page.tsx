@@ -16,7 +16,9 @@ export default function About() {
         {/* Left Column: Text */}
         <div className="md:w-1/2 w-full mx-4">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
-          <hr className="w-14 border-t-4 border-gray-400 mb-4" />
+          {/* <hr className="w-14 border-t-4 border-gray-400 mb-4" /> */}
+          <div className="w-16 h-2 bg-gradient-to-r from-sky-400 to-blue-300 mb-12 rounded-full shadow-lg shadow-sky-500/50" />
+
 
           {/* Main text animation */}
           <div className="text-sm leading-relaxed">
