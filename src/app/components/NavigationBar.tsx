@@ -129,7 +129,7 @@ export default function NavigationBar() {
 
         {/* Navigation Items */}
         <div className="flex space-x-8 text-base font-semibold items-center" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", letterSpacing: '0.5px' }}>
-          {navItems.map((item, index) =>
+          {navItems.map((item) =>
             item.submenu ? (
               <div key={item.name} className="relative">
                 <motion.button
@@ -321,7 +321,7 @@ export default function NavigationBar() {
             >
               <div className="p-6">
                 <div className="flex flex-col space-y-2">
-                  {navItems.map((item, index) =>
+                  {navItems.map((item) =>
                     item.submenu ? (
                       <div key={item.name}>
                         <button
