@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Plane, MapPin, Calendar, Users, Star, ArrowRight, Globe, Shield, Clock, Headphones } from 'lucide-react';
+import { Plane, MapPin, Calendar, Users, ArrowRight, Globe, Shield, Clock, Headphones } from 'lucide-react';
 
 export default function ReservationKart() {
   const [isVisible, setIsVisible] = useState(false);
