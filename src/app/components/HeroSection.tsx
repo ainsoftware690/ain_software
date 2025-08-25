@@ -291,7 +291,7 @@ export function HeroSection() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center min-h-screen">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center min-h-screen pt-16">
         <div className="px-4 py-10 md:py-20">
           {/* Enhanced Typography */}
           <h1 className="relative z-20 mx-auto max-w-6xl text-center text-3xl font-black md:text-6xl lg:text-8xl leading-tight">

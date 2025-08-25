@@ -1,237 +1,357 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import LogoImage from "../../utils/Images/logo.png";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa6";
 import { MdAddIcCall, MdOutlineMarkEmailRead } from "react-icons/md";
 
+type Particle = {
+  id: number;
+  left: number;
+  top: number;
+  delay: number;
+  duration: number;
+};
+
+type FloatingShape = {
+  id: number;
+  left: number;
+  top: number;
+  size: number;
+  delay: number;
+  duration: number;
+  blur: number;
+};
+
 const Footer = () => {
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
+
+  // Generate particles and shapes only on client side to avoid hydration mismatch
+  useEffect(() => {
+    const particleArray = Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 3 + Math.random() * 4
+    }));
+    
+    const shapeArray = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: 100 + Math.random() * 200,
+      delay: Math.random() * 3,
+      duration: 8 + Math.random() * 6,
+      blur: 40 + Math.random() * 60
+    }));
+    
+    setParticles(particleArray);
+    setFloatingShapes(shapeArray);
+  }, []);
+
   return (
-    <div className="w-screen bg-sky-900 overflow-hidden border-t border-gray-700 mt-8">
-      {/* Footer Info Section */}
-      <div className="dark:bg-neutral-950/80 bg-sky-900">
-        <div className="mx-auto px-8 md:px-16 py-8">
+    <div className="relative w-full overflow-hidden">
+      {/* Multi-layered Animated Background */}
+      <div className="absolute inset-0">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900"></div>
+        
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/80 via-purple-800/60 to-pink-900/80 animate-pulse"></div>
+        
+        {/* Moving gradient waves */}
+        <div className="absolute inset-0 opacity-60">
+          <div className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-radial from-cyan-500/30 via-blue-600/20 to-transparent rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+          <div className="absolute top-20 -right-32 w-80 h-80 bg-gradient-radial from-purple-500/40 via-pink-500/20 to-transparent rounded-full animate-spin" style={{ animationDuration: '25s', animationDirection: 'reverse' }}></div>
+          <div className="absolute bottom-10 left-20 w-64 h-64 bg-gradient-radial from-emerald-500/30 via-teal-500/20 to-transparent rounded-full animate-spin" style={{ animationDuration: '18s' }}></div>
+        </div>
+        
+        {/* Mesh gradient background */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-600/40 via-fuchsia-500/30 to-cyan-400/40 animate-pulse" style={{ animationDuration: '4s' }}></div>
+        </div>
+        
+        {/* Dark overlay for contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+        
+        {/* Floating geometric shapes */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          {floatingShapes.map((shape) => (
+            <div
+              key={shape.id}
+              className="absolute rounded-full opacity-20 animate-bounce"
+              style={{
+                left: `${shape.left}%`,
+                top: `${shape.top}%`,
+                width: `${shape.size}px`,
+                height: `${shape.size}px`,
+                background: `linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3))`,
+                filter: `blur(${shape.blur}px)`,
+                animationDelay: `${shape.delay}s`,
+                animationDuration: `${shape.duration}s`,
+                transform: 'translate(-50%, -50%)'
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Enhanced floating particles */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          {particles.map((particle) => (
+            <div
+              key={particle.id}
+              className="absolute rounded-full animate-bounce"
+              style={{
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+                width: '3px',
+                height: '3px',
+                background: `linear-gradient(45deg, rgba(34, 211, 238, 0.8), rgba(168, 85, 247, 0.8))`,
+                boxShadow: '0 0 10px rgba(34, 211, 238, 0.5)',
+                animationDelay: `${particle.delay}s`,
+                animationDuration: `${particle.duration}s`
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        ></div>
+      </div>
+
+      {/* Enhanced Glassmorphism Container */}
+      <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/10 via-white/5 to-white/10 border-t border-white/20 shadow-2xl">
+        {/* Glowing top border */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"></div>
+        
+        <div className="mx-auto px-8 md:px-16 py-12">
           <div className="md:flex md:justify-between">
-            {/* Logo and Contact */}
-            <div className="mb-6 md:mb-0">
-              <Link href="#">
-                <div className="relative w-36 h-14 sm:w-44 sm:h-18 md:w-52 md:h-20">
-                  <Image
-                    src={LogoImage}
-                    alt="Earthconnlogo"
-                    fill
-                    className="object-contain object-left rounded-sm "
-                    priority
-                  />
+            {/* Logo and Contact Section */}
+            <div className="mb-8 md:mb-0 group">
+              <Link href="/" className="block group mb-8">
+                <div className="relative w-20 h-20 hover:scale-110 transition-all duration-500">
+                  {/* Glowing ring around logo */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/50 to-purple-400/50 p-0.5 animate-spin" style={{ animationDuration: '3s' }}>
+                    <div className="w-full h-full bg-white rounded-2xl"></div>
+                  </div>
+                  <div className="relative w-full h-full bg-white rounded-2xl p-2 shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 z-10">
+                    <Image
+                      src="/Images/logo.png"
+                      alt="Earthconn Logo"
+                      width={64}
+                      height={64}
+                      className="object-contain w-full h-full"
+                      priority
+                    />
+                  </div>
                 </div>
               </Link>
 
-              <div className="flex space-x-4 font-medium mt-4 text-gray-300">
-                <div className="text-2xl text-white">
-                  <MdAddIcCall />
+              {/* Enhanced Contact Info with Neon Effects */}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 p-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-cyan-500/20 hover:to-blue-500/20 border border-white/10 hover:border-cyan-400/50 transition-all duration-500 group cursor-pointer backdrop-blur-sm shadow-lg hover:shadow-cyan-400/20">
+                  <div className="text-2xl text-cyan-400 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 drop-shadow-lg">
+                    <MdAddIcCall />
+                  </div>
+                  <p className="text-gray-300 group-hover:text-white transition-colors duration-500 font-medium">
+                    +1(888) 206-5831
+                  </p>
                 </div>
-                <div>
-                  <p> +1(888) 206-5831</p>
-                </div>
-              </div>
-              <div className="flex space-x-4 my-4 text-gray-300">
-                <div className="text-2xl text-white">
-                  <MdOutlineMarkEmailRead />
-                </div>
-                <div>
+
+                <div className="flex items-center space-x-4 p-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-emerald-500/20 hover:to-green-500/20 border border-white/10 hover:border-emerald-400/50 transition-all duration-500 group backdrop-blur-sm shadow-lg hover:shadow-emerald-400/20">
+                  <div className="text-2xl text-emerald-400 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 drop-shadow-lg">
+                    <MdOutlineMarkEmailRead />
+                  </div>
                   <Link
                     href="mailto:helpdesk@earthconntravels.com"
-                    className="hover:underline"
+                    className="text-gray-300 hover:text-white transition-colors duration-500 hover:underline font-medium"
                   >
                     helpdesk@earthconntravels.com
                   </Link>
                 </div>
-              </div>
-              <div className="flex space-x-4 mb-3 text-gray-300">
-                <div className="text-2xl text-white">
-                  <FaLocationDot />
-                </div>
-                <div>
-                  <p>Head office - 30 Summer St Hagerstown MD, 21740</p>
+
+                <div className="flex items-center space-x-4 p-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 hover:from-rose-500/20 hover:to-pink-500/20 border border-white/10 hover:border-rose-400/50 transition-all duration-500 group backdrop-blur-sm shadow-lg hover:shadow-rose-400/20">
+                  <div className="text-2xl text-rose-400 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 drop-shadow-lg">
+                    <FaLocationDot />
+                  </div>
+                  <p className="text-gray-300 group-hover:text-white transition-colors duration-500 font-medium">
+                    Head office - 30 Summer St Hagerstown MD, 21740
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Footer Links */}
-            <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <div>
-                <h2 className="mb-6 text-sm font-semibold text-white uppercase">
-                  Link
-                </h2>
-                <ul className="text-gray-300 font-medium">
-                  <li className="mb-4">
-                    <Link href="/" className="hover:underline">
-                      Home
-                    </Link>
-                  </li>
-                  <li className="mb-4">
-                    <Link href="/about" className="hover:underline">
-                      About
-                    </Link>
-                  </li>
-                  <li className="mb-4">
-                    <Link href="/services" className="hover:underline">
-                      Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="hover:underline">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h2 className="mb-6 text-sm font-semibold text-white uppercase">
-                  Follow us
-                </h2>
-                <ul className="text-gray-300 font-medium">
-                  <li className="mb-4">
+            {/* Enhanced Navigation Links */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              {/* Quick Links */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-6 tracking-wide relative">
+                  QUICK LINKS
+                  <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 animate-pulse"></div>
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Home", href: "/" },
+                    { name: "About", href: "/about" },
+                    { name: "Services", href: "/services" },
+                    { name: "Contact", href: "/contact" }
+                  ].map((link, index) => (
                     <Link
-                      href="https://www.instagram.com/blue_star_motors/?igshid=MzRlODBiNWFlZA%3D"
+                      key={link.name}
+                      href={link.href}
+                      className="block text-gray-300 hover:text-white transition-all duration-500 hover:translate-x-3 hover:drop-shadow-lg font-medium group relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-blue-400/0 to-purple-400/0 group-hover:from-cyan-400/10 group-hover:via-blue-400/10 group-hover:to-purple-400/10 transition-all duration-500 rounded-lg"></div>
+                      <span className="relative z-10 block py-2 px-3 rounded-lg">
+                        {link.name}
+                        <span className="absolute bottom-0 left-3 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 transition-all duration-500 group-hover:w-16"></span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 bg-clip-text text-transparent mb-6 tracking-wide relative">
+                  FOLLOW US
+                  <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-rose-400 animate-pulse"></div>
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Instagram", href: "https://www.instagram.com/blue_star_motors/?igshid=MzRlODBiNWFlZA%3D", icon: FaInstagram },
+                    { name: "LinkedIn", href: "https://www.linkedin.com/company/earthconn-travel-llc/about/?viewAsMember=true", icon: FaLinkedinIn },
+                    { name: "Facebook", href: "https://www.facebook.com/people/Mudassar-Shaikh/100083367522006/?mibextid=ZbWKwL", icon: FaFacebookF }
+                  ].map((social) => (
+                    <Link
+                      key={social.name}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:underline"
+                      className="flex items-center space-x-3 text-gray-300 hover:text-white transition-all duration-500 group font-medium relative overflow-hidden"
                     >
-                      Instagram
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400/0 to-pink-400/0 group-hover:from-purple-400/10 group-hover:to-pink-400/10 transition-all duration-500 rounded-lg"></div>
+                      <social.icon className="text-lg group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 relative z-10 drop-shadow-lg" />
+                      <span className="group-hover:translate-x-2 transition-all duration-500 relative z-10">
+                        {social.name}
+                      </span>
                     </Link>
-                  </li>
-                  <li className="mb-4">
-                    <Link href="#" className="hover:underline">
-                      LinkedIn
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="https://www.facebook.com/people/Mudassar-Shaikh/100083367522006/?mibextid=ZbWKwL"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline"
-                    >
-                      Facebook
-                    </Link>
-                  </li>
-                </ul>
+                  ))}
+                </div>
               </div>
-              <div>
-                <h2 className="mb-6 text-sm font-semibold text-white uppercase">
-                  Legal
-                </h2>
-                <ul className="text-gray-300 font-medium">
-                  <li className="mb-4">
-                    <Link href="/privacy-policy" className="hover:underline">
-                      Privacy Policy
+
+              {/* Legal */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent mb-6 tracking-wide relative">
+                  LEGAL
+                  <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-400 to-cyan-400 animate-pulse"></div>
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Privacy Policy", href: "/privacy-policy" },
+                    { name: "Terms & Conditions", href: "/terms&conditions" }
+                  ].map((legal) => (
+                    <Link
+                      key={legal.name}
+                      href={legal.href}
+                      className="block text-gray-300 hover:text-white transition-all duration-500 hover:translate-x-3 font-medium group relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 to-teal-400/0 group-hover:from-emerald-400/10 group-hover:to-teal-400/10 transition-all duration-500 rounded-lg"></div>
+                      <span className="relative z-10 block py-2 px-3 rounded-lg">
+                        {legal.name}
+                        <span className="absolute bottom-0 left-3 w-0 h-0.5 bg-gradient-to-r from-emerald-400 to-teal-400 transition-all duration-500 group-hover:w-20"></span>
+                      </span>
                     </Link>
-                  </li>
-                  <li>
-                    <Link href="/terms&conditions" className="hover:underline">
-                      Terms & Conditions
-                    </Link>
-                  </li>
-                </ul>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Bottom Footer */}
-          <hr className="my-6 border-gray-200 dark:border-gray-700 lg:my-8" />
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <span className=" text-sm text-gray-300  dark:text-gray-400 block mt-1">UEI SAM: RYUJXHF9W6B9 &nbsp;  &nbsp; CAGE: 9KL56</span>
-            <span className="text-sm text-gray-300 sm:text-center dark:text-gray-400">
-              © 2025{" "}
-              <Link href="#" className="hover:underline">
-                Earthconntravels
-              </Link>
-              . All Rights Reserved.
-            </span>
-            <div className="sm:flex sm:items-center sm:justify-between">
-              <div className="flex mt-4 sm:justify-center sm:mt-0">
-                <Link
-                  href="https://www.facebook.com/people/100083367522006/?mibextid=ZbWKwL"
-                  target="_blank"
-                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 8 19"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="sr-only">Facebook page</span>
+          {/* Enhanced Divider with Animation */}
+          <div className="my-8 relative">
+            <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+            <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-pulse"></div>
+          </div>
+
+          {/* Enhanced Bottom Section */}
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-4 lg:space-y-0">
+            {/* Company Info with Neon Effects */}
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
+              <span className="text-sm text-gray-400 px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 rounded-full backdrop-blur-sm border border-white/20 font-medium hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-500">
+                UEI SAM: RYUJXHF9W6B9
+              </span>
+              <span className="text-sm text-gray-400 px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 rounded-full backdrop-blur-sm border border-white/20 font-medium hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-400/20 transition-all duration-500">
+                CAGE: 9KL56
+              </span>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center">
+              <span className="text-sm text-gray-400 font-medium">
+                © 2025{" "}
+                <Link href="/" className="hover:text-white transition-all duration-500 font-semibold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text hover:text-transparent bg-300% animate-gradient-x">
+                  Earthconntravels
                 </Link>
+                . All Rights Reserved.
+              </span>
+            </div>
+
+            {/* Enhanced Social Icons with Glow Effects */}
+            <div className="flex justify-center lg:justify-end space-x-4">
+              {[
+                { icon: FaFacebookF, href: "https://www.facebook.com/people/100083367522006/?mibextid=ZbWKwL", color: "hover:bg-blue-500/30 hover:text-blue-400 hover:border-blue-400/60 hover:shadow-blue-400/50" },
+                { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/earthconn-travel-llc/about/?viewAsMember=true", color: "hover:bg-blue-600/30 hover:text-blue-500 hover:border-blue-500/60 hover:shadow-blue-500/50" },
+                { icon: FaTwitter, href: "#", color: "hover:bg-sky-500/30 hover:text-sky-400 hover:border-sky-400/60 hover:shadow-sky-400/50" },
+                { icon: FaInstagram, href: "https://www.instagram.com", color: "hover:bg-pink-500/30 hover:text-pink-400 hover:border-pink-400/60 hover:shadow-pink-400/50" }
+              ].map((social, index) => (
                 <Link
-                  href="https://www.linkedin.com/company/earthconn-travel-llc/about/?viewAsMember=true"
+                  key={index}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
+                  className={`w-12 h-12 bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm rounded-xl border border-white/30 flex items-center justify-center text-gray-300 ${social.color} transition-all duration-500 hover:scale-125 hover:rotate-12 hover:shadow-2xl group relative overflow-hidden`}
                 >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.45 20.45h-3.6v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5h-3.6v-11h3.45v1.5h.05c.48-.9 1.68-1.8 3.45-1.8 3.7 0 4.4 2.45 4.4 5.65v5.65ZM5.4 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2Zm-1.8 13.05h3.6v-11h-3.6v11ZM22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8C24 .8 23.2 0 22.2 0Z" />
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/0 group-hover:from-white/10 group-hover:to-white/5 transition-all duration-500 rounded-xl"></div>
+                  <social.icon className="w-4 h-4 group-hover:scale-110 transition-all duration-500 relative z-10 drop-shadow-lg" />
                 </Link>
-
-                <Link
-                  href="#"
-                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 17"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="sr-only">Twitter page</span>
-                </Link>
-
-                <Link
-                  href="https://www.instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-gray-900 dark:hover:text-white ms-5"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.054 1.966.24 2.423.403a4.918 4.918 0 0 1 1.78 1.04 4.918 4.918 0 0 1 1.04 1.78c.163.457.35 1.254.403 2.423.059 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.966-.403 2.423a4.918 4.918 0 0 1-1.04 1.78 4.918 4.918 0 0 1-1.78 1.04c-.457.163-1.254.35-2.423.403-1.266.059-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.966-.24-2.423-.403a4.918 4.918 0 0 1-1.78-1.04 4.918 4.918 0 0 1-1.04-1.78c-.163-.457-.35-1.254-.403-2.423C2.213 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.054-1.17.24-1.966.403-2.423a4.918 4.918 0 0 1 1.04-1.78 4.918 4.918 0 0 1 1.78-1.04c.457-.163 1.254-.35 2.423-.403C8.416 2.213 8.8 2.2 12 2.2Zm0 1.8c-3.14 0-3.504.012-4.74.07-.99.048-1.523.21-1.877.35-.472.183-.81.4-1.165.755a3.118 3.118 0 0 0-.755 1.165c-.14.354-.302.887-.35 1.877-.058 1.236-.07 1.6-.07 4.74s.012 3.504.07 4.74c.048.99.21 1.523.35 1.877.183.472.4.81.755 1.165.354.354.692.572 1.165.755.354.14.887.302 1.877.35 1.236.058 1.6.07 4.74.07s3.504-.012 4.74-.07c.99-.048 1.523-.21 1.877-.35.472-.183.81-.4 1.165-.755a3.118 3.118 0 0 0 .755-1.165c.14-.354.302-.887.35-1.877.058-1.236.07-1.6.07-4.74s-.012-3.504-.07-4.74c-.048-.99-.21-1.523-.35-1.877a3.118 3.118 0 0 0-.755-1.165 3.118 3.118 0 0 0-1.165-.755c-.354-.14-.887-.302-1.877-.35-1.236-.058-1.6-.07-4.74-.07Zm0 3.8a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4Zm0 1.8a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Zm5.7-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" />
-                  </svg>
-                  <span className="sr-only">Instagram</span>
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes gradient-x {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        .animate-gradient-x {
+          animation: gradient-x 3s ease infinite;
+          background-size: 200% 200%;
+        }
+        .bg-300% {
+          background-size: 300% 300%;
+        }
+        .bg-gradient-radial {
+          background: radial-gradient(circle, var(--tw-gradient-stops));
+        }
+      `}</style>
     </div>
   );
 };
