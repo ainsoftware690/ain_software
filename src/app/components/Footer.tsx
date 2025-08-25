@@ -147,7 +147,7 @@ const Footer = () => {
                   </div>
                   <div className="relative w-full h-full bg-white rounded-2xl p-2 shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 z-10">
                     <Image
-                      src="/Images/logo.png"
+                      src="/images/logo.png"
                       alt="Earthconn Logo"
                       width={64}
                       height={64}
