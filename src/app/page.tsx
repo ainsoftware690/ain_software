@@ -11,20 +11,22 @@ import CaseStudySlider from "./components/CaseStudy";
 import WhyChooseUs from "./components/WhyChooseUS";
 import AtAGlanceSection from "./components/At-glance";
 import ModernPartnersSection from "./components/ModernPartnersSection";
+import TechiesSection from "./components/TechiesSection";
 
-export default function Home() {
+export default function Home() { 
   return ( 
     <>
-      <main className="flex flex-col items-center bg-white justify-center min-h-screen  overflow-hidden">
+      <main className="flex flex-col items-center bg-white justify-center min-h-screen overflow-hidden">
         <HeroSection />
         <About />
-         <Services />   
-         <ReservationKart /> 
-         <AtAGlanceSection />
+        <Services />   
+        <ReservationKart /> 
+        <AtAGlanceSection />
+        <TechiesSection />
         <ModernPartnersSection />
         <CaseStudySlider />
         <WhyChooseUs/> 
-          </main>
+      </main>
     </>
   );
 }
