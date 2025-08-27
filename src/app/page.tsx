@@ -12,6 +12,8 @@ import WhyChooseUs from "./components/WhyChooseUS";
 import AtAGlanceSection from "./components/At-glance";
 import ModernPartnersSection from "./components/ModernPartnersSection";
 import TechiesSection from "./components/TechiesSection";
+import WhoWeServe from "./components/WhoWeServe";
+import AIFederal from "./components/AIFederal";
 
 export default function Home() { 
   return ( 
@@ -23,6 +25,8 @@ export default function Home() {
         <ReservationKart /> 
         <AtAGlanceSection />
         <TechiesSection />
+        <WhoWeServe />
+        <AIFederal />
         <ModernPartnersSection />
         <CaseStudySlider />
         <WhyChooseUs/> 
