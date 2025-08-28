@@ -16,6 +16,8 @@ const navItems = [
     ],
   },
   { name: "Services", link: "/services" },
+
+  {name: "Certifications", link: "/certification"},
   {
     name: "ReservationKart.com",
     link: "https://reservationkart.com",

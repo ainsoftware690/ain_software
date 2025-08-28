@@ -343,7 +343,7 @@ const AIFederalServicesPage = () => {
                   className="absolute -bottom-8 -right-8 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl p-4 backdrop-blur-sm border border-cyan-400/30"
                 >
                   <Layers className="w-8 h-8 text-cyan-400" />
-                </motion.div>
+                </motion.div> 
               </div>
             </motion.div>
           </div>

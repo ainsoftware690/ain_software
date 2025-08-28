@@ -290,10 +290,10 @@ const Footer = () => {
             {/* Company Info with Neon Effects */}
             <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-6">
               <span className="text-sm text-gray-400 px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 rounded-full backdrop-blur-sm border border-white/20 font-medium hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-500">
-                UEI SAM: RYUJXHF9W6B9
+                UEI SAM:TL85Q7ANXGC3
               </span>
               <span className="text-sm text-gray-400 px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 rounded-full backdrop-blur-sm border border-white/20 font-medium hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-400/20 transition-all duration-500">
-                CAGE: 9KL56
+                CAGE: 14B86
               </span>
             </div>
 

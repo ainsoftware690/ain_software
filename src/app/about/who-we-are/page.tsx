@@ -301,7 +301,7 @@ export default function WhoWeAre() {
               <div className="space-y-6">
                 <div className="space-y-4">
                   <h2 className="text-5xl font-black bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent mx-4">
-                    OUR VISION
+                    OUR MISSION
                   </h2>
                   <div className="w-16 h-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full mx-4"></div>
                 </div>
