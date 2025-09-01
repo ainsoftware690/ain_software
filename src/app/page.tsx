@@ -14,6 +14,7 @@ import ModernPartnersSection from "./components/ModernPartnersSection";
 import TechiesSection from "./components/TechiesSection";
 import WhoWeServe from "./components/WhoWeServe";
 import AIFederal from "./components/AIFederal";
+import GenerativeAISection from "./components/GenerativeAISection";
 
 export default function Home() { 
   return ( 
@@ -27,6 +28,7 @@ export default function Home() {
         <TechiesSection />
         <WhoWeServe />
         <AIFederal />
+        <GenerativeAISection />
         <ModernPartnersSection />
         <CaseStudySlider />
         <WhyChooseUs/> 

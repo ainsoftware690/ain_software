@@ -459,7 +459,7 @@ const TechiesSection: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <motion.span 
+                  <motion.span  
                     className="block mb-3 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent"
                     animate={{ 
                       backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
