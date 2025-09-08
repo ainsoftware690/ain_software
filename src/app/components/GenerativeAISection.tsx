@@ -104,7 +104,7 @@ const GenerativeAISection = () => {
           }}
         />
         
-        {/* Floating Geometric Shapes */}
+        {/* Floating Geometric Shapes */} 
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <div

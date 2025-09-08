@@ -1,37 +1,30 @@
-// app/api/contact/route.ts
+
 import { NextResponse } from 'next/server';
-import clientPromise from '@/app/lib/mongodb'; // ✅ Keep this import as-is
+import { MongoClient } from 'mongodb';
+
+const uri = process.env.MONGODB_URI as string; // put this in .env.local
+const client = new MongoClient(uri);
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("Incoming Body:", body);
+    const { full_name, email, type_of_service, message } = body;
 
-    // ✅ Updated to match frontend field names
-    const { full_name, email, message, type_of_service } = body;
+    await client.connect();
+    const db = client.db("earthconn");
+    const collection = db.collection("contacts");
 
-    // ✅ Check for missing fields
-    if (!full_name || !email || !message || !type_of_service) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-    }
-
-    const client = await clientPromise;
-    const db = client.db('earthconn');
-    const collection = db.collection('contacts');
-
-    // ✅ Save in DB using consistent naming
     await collection.insertOne({
-      name: full_name,
+      full_name,
       email,
-      message,
       type_of_service,
-      timestamp: new Date(),
+      message,
+      createdAt: new Date(),
     });
 
-    return NextResponse.json({ message: 'Contact saved successfully' }, { status: 200 });
-
-  } catch (error) {
-    console.error('API error [POST /api/contact]:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ success: true, message: "Message stored successfully" });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ success: false, error: "Failed to store message" }, { status: 500 });
   }
 }

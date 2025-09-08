@@ -40,17 +40,51 @@ export default function ModernContact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   // Simulate API call
+  //   await new Promise(resolve => setTimeout(resolve, 2000));
+
+  //   setIsSubmitting(false);
+  //   setIsSubmitted(true);
+
+  //   // Reset after 4 seconds
+  //   setTimeout(() => {
+  //     setIsSubmitted(false);
+  //     setForm({
+  //       full_name: '',
+  //       email: '',
+  //       type_of_service: '',
+  //       message: '',
+  //     });
+  //   }, 4000);
+  // };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
+  try {
+    // send form data to API
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form), // sending your form state
+    });
 
-    setIsSubmitting(false);
+    if (!res.ok) throw new Error("Failed to send message");
+
+    // success: show confirmation
     setIsSubmitted(true);
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
 
-    // Reset after 4 seconds
+    // reset form after 4 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setForm({
@@ -60,7 +94,8 @@ export default function ModernContact() {
         message: '',
       });
     }, 4000);
-  };
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-950 via-purple-900 to-pink-900 relative overflow-hidden">
