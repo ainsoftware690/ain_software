@@ -4,6 +4,7 @@ import "./globals.css";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import AIChatboat from "./components/AIChatboat";
 
 // Google Fonts
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className="m-0 p-0 box-border">
         <NavigationBar />
         <CookieConsent />
+        <AIChatboat />
         <main className="w-full">{children}</main>
         <Footer />
       </body>

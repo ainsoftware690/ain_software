@@ -15,6 +15,7 @@ import TechiesSection from "./components/TechiesSection";
 import WhoWeServe from "./components/WhoWeServe";
 import AIFederal from "./components/AIFederal";
 import GenerativeAISection from "./components/GenerativeAISection";
+import Testimonial from "./components/Testimonial";
 
 export default function Home() { 
   return ( 
@@ -32,6 +33,7 @@ export default function Home() {
         <ModernPartnersSection />
         <CaseStudySlider />
         <WhyChooseUs/> 
+        <Testimonial />
       </main>
     </>
   );
