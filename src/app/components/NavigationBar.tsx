@@ -16,7 +16,6 @@ const navItems = [
     ],
   },
   { name: "Services", link: "/services" },
-
   {name: "Certifications", link: "/certification"},
   {
     name: "ReservationKart.com",
@@ -114,12 +113,15 @@ export default function NavigationBar() {
             className="relative"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/earthconnlogo.png"
               alt="Logo"
-              width={80}
-              height={80}
-              className="h-16 w-16 rounded-xl shadow-lg ring-2 ring-blue-500/20 hover:ring-blue-400/40 transition-all duration-300"
+              width={120}
+              height={120}
+              className="h-20 w-20 rounded-xl shadow-lg ring-2 ring-blue-500/20 hover:ring-blue-400/40 transition-all duration-300"
               priority
+              style={{
+                backgroundColor: 'transparent'
+              }}
             />
             <motion.div
               className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 hover:opacity-100 blur-sm"
@@ -270,12 +272,15 @@ export default function NavigationBar() {
               className="relative"
             >
               <Image
-                src="/images/logo.png"
+                src="/images/earthconnlogo.png"
                 alt="Logo"
-                width={60}
-                height={60}
-                className="h-14 w-14 rounded-xl shadow-lg ring-2 ring-blue-500/20"
+                width={80}
+                height={80}
+                className="h-16 w-16 rounded-xl shadow-lg ring-2 ring-blue-500/20"
                 priority
+                style={{
+                  backgroundColor: 'transparent'
+                }}
               />
             </motion.div>
           </Link>

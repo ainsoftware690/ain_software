@@ -286,9 +286,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ position = 'bottom-right' }) => {
     a.download = `chat-export-${new Date().toISOString().slice(0, 10)}.txt`;
     a.click();
   };
-
+ 
   const positionClasses = {
-    'bottom-right': 'bottom-4 right-4',
+    'bottom-right': 'bottom-4 right-4', 
     'bottom-left': 'bottom-4 left-4',
     'center': 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
   };

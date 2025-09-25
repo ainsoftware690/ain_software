@@ -6,7 +6,7 @@ import { FaLocationDot, FaFacebookF, FaLinkedinIn, FaTwitter, FaInstagram } from
 import { MdAddIcCall, MdOutlineMarkEmailRead } from "react-icons/md";
 
 type Particle = {
-  id: number;
+  id: number;  
   left: number;
   top: number;
   delay: number;
@@ -147,7 +147,7 @@ const Footer = () => {
                   </div>
                   <div className="relative w-full h-full bg-white rounded-2xl p-2 shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 z-10">
                     <Image
-                      src="/images/logo.png"
+                      src="/images/earthconnlogo.png"
                       alt="Earthconn Logo"
                       width={64}
                       height={64}
@@ -356,4 +356,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; 
