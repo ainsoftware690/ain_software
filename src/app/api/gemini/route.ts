@@ -1,5 +1,7 @@
 // app/api/gemini/route.ts
 import { NextResponse } from 'next/server';
+export const runtime = "nodejs";
+
 
 let lastRequestTime = 0;
 const MIN_REQUEST_INTERVAL = 4000;
