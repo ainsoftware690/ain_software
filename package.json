@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@react-three/fiber": "^9.1.2",
     "@tabler/icons-react": "^3.31.0",
     "@types/three": "^0.176.0",

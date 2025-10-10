@@ -5,6 +5,7 @@ import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import AIChatboat from "./components/AIChatboat";
+import GeminiChatbot from "./components/GeminiChatbot";
 
 // Google Fonts
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -23,15 +24,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
+       <head>
         <link rel="icon" href="/images/logo.png" type="website-icon" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
+      </head>      
       <body className="m-0 p-0 box-border">
         <NavigationBar />
         <CookieConsent />
-        <AIChatboat />
+        {/* <AIChatboat /> */}
+        <GeminiChatbot />
         <main className="w-full">{children}</main>
         <Footer />
       </body>
