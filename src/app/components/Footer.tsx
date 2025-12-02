@@ -147,7 +147,7 @@ const Footer = () => {
                   </div>
                   <div className="relative w-full h-full bg-white rounded-2xl p-2 shadow-2xl hover:shadow-cyan-500/40 transition-all duration-500 z-10">
                     <Image
-                      src="/images/earthconnlogo.png"
+                      src="/images/earthconnlogo1.jpeg"
                       alt="Earthconn Logo"
                       width={64}
                       height={64}
@@ -206,7 +206,7 @@ const Footer = () => {
                     { name: "About", href: "/about" },
                     { name: "Services", href: "/services" },
                     { name: "Contact", href: "/contact" }
-                  ].map((link, index) => (
+                  ].map((link) => (
                     <Link
                       key={link.name}
                       href={link.href}

@@ -113,7 +113,7 @@ export default function NavigationBar() {
             className="relative"
           >
             <Image
-              src="/images/earthconnlogo.png"
+              src="/images/earthconnlogo1.jpeg"
               alt="Logo"
               width={120}
               height={120}
@@ -272,7 +272,7 @@ export default function NavigationBar() {
               className="relative"
             >
               <Image
-                src="/images/earthconnlogo.png"
+                src="/images/earthconnlogo1.jpeg"
                 alt="Logo"
                 width={80}
                 height={80}
