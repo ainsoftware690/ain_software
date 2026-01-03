@@ -136,12 +136,12 @@ export default function ModernContact() {
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Sparkles className="text-yellow-400 animate-pulse" size={32} />
                 <h1 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h1>
                 <Sparkles className="text-yellow-400 animate-pulse animation-delay-1000" size={32} />
               </div>
               <p className="text-2xl text-gray-300 max-w-3xl mx-auto font-light">
-                Ready to transform your vision into reality? Drop us a message and let's create something extraordinary together.
+                Ready to transform your vision into reality? Drop us a message and let&apos;s create something extraordinary together.
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function ModernContact() {
                       <div className="flex-1">
                         <div className="mb-8">
                           <h2 className="text-3xl font-bold text-white mb-2">Send us a message</h2>
-                          <p className="text-gray-300">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                          <p className="text-gray-300">We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.</p>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-8">
@@ -304,7 +304,7 @@ export default function ModernContact() {
                           </div>
                           <h3 className="text-4xl font-bold text-white mb-4">Message Delivered!</h3>
                           <p className="text-xl text-gray-300 mb-6">
-                            Thanks for reaching out! We'll get back to you within 24 hours.
+                            Thanks for reaching out! We&apos;ll get back to you within 24 hours.
                           </p>
                           <div className="flex items-center justify-center gap-2 text-gray-400">
                             <Sparkles size={16} className="animate-pulse" />
@@ -357,7 +357,7 @@ export default function ModernContact() {
                         <p className="text-gray-300 text-lg">+1 (555) 123-4567</p>
                         <p className="text-gray-400 text-sm mt-2">📞 Available 24/7 for support</p>
                       </div>
-                    </div>
+                    </div> 
                   </div>
 
                   {/* Email Card */}

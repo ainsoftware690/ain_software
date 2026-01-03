@@ -4,7 +4,6 @@ import "./globals.css";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
-import AIChatboat from "./components/AIChatboat";
 import GeminiChatbot from "./components/GeminiChatbot";
 
 // Google Fonts
@@ -32,7 +31,6 @@ export default function RootLayout({
       <body className="m-0 p-0 box-border">
         <NavigationBar />
         <CookieConsent />
-        {/* <AIChatboat /> */}
         <GeminiChatbot />
         <main className="w-full">{children}</main>
         <Footer />
