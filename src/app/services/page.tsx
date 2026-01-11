@@ -12,7 +12,7 @@ export default function Services() {
   };
 
   useEffect(() => {
-    const handleMouseMove = (event: { clientX: any; clientY: any; }) => {
+    const handleMouseMove = (event: { clientX: number; clientY: number; }) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
     
@@ -50,11 +50,21 @@ export default function Services() {
       gradient: 'from-indigo-600 via-blue-600 to-slate-700',
       hoverGradient: 'from-indigo-500 via-blue-500 to-slate-600',
       features: ['Strategic Planning', 'Technology Assessment', 'Implementation Support', 'Ongoing Optimization']
+    },
+    {
+      id: '04',
+      title: 'AI Security & Automation',
+      shortDesc: 'Intelligent solutions',
+      description: 'Leverage cutting-edge AI to secure your infrastructure and automate complex workflows. Our integrated approach combines intelligent threat protection with seamless process automation.',
+      icon: Zap,
+      gradient: 'from-purple-600 via-violet-600 to-indigo-700',
+      hoverGradient: 'from-purple-500 via-violet-500 to-indigo-600',
+      features: ['Threat Detection', 'Process Automation', 'Automated Response', 'Intelligent Workflows']
     }
   ];
 
   return (
-<section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden" style={{margin: 0, padding: 0}}>
+    <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden" style={{margin: 0, padding: 0}}>
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-4 -right-4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -92,7 +102,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {services.map((service, serviceIndex) => {
             const Icon = service.icon;
             return (
@@ -190,11 +200,11 @@ export default function Services() {
 
         {/* Bottom CTA Section */}
         <div className="text-center mt-20" style={{marginBottom: 0, paddingBottom: 0}}>
-          <div className="inline-flex items-center space-x-4 bg-white/5 backdrop-blur-xl rounded-full px-8 py-4 border border-white/10">
-            <span className="text-blue-100">Ready to transform your business?</span>
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-4 bg-white/5 backdrop-blur-xl rounded-full px-6 sm:px-8 py-4 border border-white/10 max-w-2xl mx-auto">
+            <span className="text-blue-100 text-sm sm:text-base text-center sm:text-left">Ready to transform your business?</span>
             <button 
               onClick={handleContactClick}
-              className="bg-gradient-to-r from-blue-500 to-sky-500 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-400 hover:to-sky-400 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              className="bg-gradient-to-r from-blue-500 to-sky-500 text-white px-6 py-2 rounded-full font-semibold hover:from-blue-400 hover:to-sky-400 transition-all duration-300 transform hover:scale-105 cursor-pointer whitespace-nowrap text-sm sm:text-base"
             >
               Get Started Today
             </button>

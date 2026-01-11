@@ -5,7 +5,7 @@ import AboutImg from "../../utils/Images/about.jpg";
 
 const aboutText = `At EARTHCONN TRAVEL LLC (trade name RESERVATIONKART.com) - a certified participant in the SBA 8(a) Business Development Program and recognized as an Economically Disadvantaged Woman-Owned Small Business (EDWOSB). Together, these entities form a cohesive and dynamic enterprise that brings a diverse portfolio of capabilities to both commercial and government sectors.`;
 
-const noteText = `NOTE - AIN Software Solution (OPC) Pvt Ltd operates under the umbrella of Earthconn Travel LLC.`;
+// const noteText = `NOT Earthconn Travel LLC.`;
 
 export default function About() {
   return (
@@ -70,21 +70,21 @@ export default function About() {
                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
                   </div>
 
-                  {/* Note section */}
+                  {/* Note section
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-xl border border-amber-400/20"></div>
                     <div className="relative p-4 flex items-start gap-3">
                       <div className="w-2 h-2 bg-gradient-to-r from-amber-400 to-yellow-400 rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
                       <div className="text-amber-100 font-medium text-base leading-relaxed">
-                        <TextGenerateEffect 
+                        {/* <TextGenerateEffect 
                           duration={2.5} 
                           filter={false} 
                           words={noteText}
                           className="text-amber-100"
-                        />
+                        /> 
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

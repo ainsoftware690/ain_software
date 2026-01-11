@@ -6,8 +6,8 @@ const options = {
 };
 
 if (!uri) {
-  throw new Error('❌ Please define the MONGODB_URI environment variable in .env.local');
-}
+  throw new Error('❌ Please define  the MONGODB_URI environment variable in .env.local');
+} 
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
