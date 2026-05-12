@@ -1,66 +1,206 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from "next/server";
-import { MongoClient } from "mongodb";
 import { Resend } from "resend";
 
-const uri = process.env.MONGODB_URI as string;
+// ==============================
+// Resend Configuration
+// ==============================
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-if (!uri) throw new Error("MONGODB_URI not defined");
+// ==============================
+// Admin Email
+// ==============================
+const ADMIN_EMAIL = "helpdesk@earthconntravels.com";
 
-const client = new MongoClient(uri);
+// ==============================
+// Escape HTML
+// ==============================
+function escape(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
+// ==============================
+// Validation
+// ==============================
+function validate(data: {
+  full_name: string;
+  email: string;
+  type_of_service: string;
+  message: string;
+}): string | null {
+  const { full_name, email, type_of_service, message } = data;
+
+  if (!full_name || full_name.trim().length < 2) {
+    return "Name is required";
+  }
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return "Valid email is required";
+  }
+
+  if (!type_of_service) {
+    return "Please select a service";
+  }
+
+  if (!message || message.trim().length < 10) {
+    return "Message must be at least 10 characters";
+  }
+
+  return null;
+}
+
+// ==============================
+// POST API
+// ==============================
 export async function POST(req: Request) {
   try {
-    const { full_name, email, type_of_service, message } = await req.json();
+    const body = await req.json();
 
-    // 1️⃣ Save to MongoDB
-    await client.connect();
-    const db = client.db("earthconn");
-
-    await db.collection("contacts").insertOne({
+    const {
       full_name,
       email,
       type_of_service,
       message,
-      createdAt: new Date(),
+    } = body;
+
+    // ==========================
+    // Validate
+    // ==========================
+    const validationError = validate({
+      full_name,
+      email,
+      type_of_service,
+      message,
     });
 
-    // 2️⃣ Admin email (YOU)
+    if (validationError) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: validationError,
+        },
+        { status: 400 }
+      );
+    }
+
+    // ==========================
+    // Sanitize Inputs
+    // ==========================
+    const safeName = escape(full_name.trim());
+    const safeEmail = email.trim();
+    const safeService = escape(type_of_service.trim());
+    const safeMessage = escape(message.trim()).replace(/\n/g, "<br />");
+
+    // ==========================
+    // SEND EMAIL TO ADMIN
+    // ==========================
     await resend.emails.send({
-      from: "EarthConn <onboarding@resend.dev>", 
-      to: ["ainsoftware89@gmail.com"],           
-      replyTo: email,
-      subject: `New Contact Request: ${type_of_service}`,
+      from: "EarthConn Travels <helpdesk@earthconntravels.com>",
+      to: [ADMIN_EMAIL],
+      replyTo: safeEmail,
+      subject: `New Inquiry - ${safeService}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${full_name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Service:</strong> ${type_of_service}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+          
+          <h2 style="color: #4f46e5;">
+            New Contact Form Submission
+          </h2>
+
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <td style="padding: 12px; font-weight: bold;">Name</td>
+              <td style="padding: 12px;">${safeName}</td>
+            </tr>
+
+            <tr>
+              <td style="padding: 12px; font-weight: bold;">Email</td>
+              <td style="padding: 12px;">${safeEmail}</td>
+            </tr>
+
+            <tr>
+              <td style="padding: 12px; font-weight: bold;">Service</td>
+              <td style="padding: 12px;">${safeService}</td>
+            </tr>
+          </table>
+
+          <div style="margin-top: 24px;">
+            <strong>Message:</strong>
+            <p style="line-height: 1.7;">
+              ${safeMessage}
+            </p>
+          </div>
+
+        </div>
       `,
     });
 
-    // 3️⃣ Auto-reply to user
+    // ==========================
+    // AUTO REPLY TO USER
+    // ==========================
     await resend.emails.send({
-      from: "EarthConn <onboarding@resend.dev>",
-      to: [email],
-      subject: "We received your message",
+      from: "EarthConn Travels <helpdesk@earthconntravels.com>",
+      to: [safeEmail],
+      subject: "We received your inquiry - EarthConn Travels",
       html: `
-        <p>Hi ${full_name},</p>
-        <p>Thanks for contacting EarthConn. Our team will get back to you shortly.</p>
-        <p>Regards,<br/>EarthConn Team</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+
+          <h2 style="color: #4f46e5;">
+            Hello ${safeName},
+          </h2>
+
+          <p style="line-height: 1.7;">
+            Thank you for contacting EarthConn Travels.
+          </p>
+
+          <p style="line-height: 1.7;">
+            We received your inquiry regarding
+            <strong>${safeService}</strong>.
+          </p>
+
+          <p style="line-height: 1.7;">
+            Our team will contact you shortly.
+          </p>
+
+          <div style="background: #f5f5f5; padding: 16px; border-radius: 8px; margin-top: 20px;">
+            <strong>Your Message:</strong>
+
+            <p style="margin-top: 10px; line-height: 1.7;">
+              ${safeMessage}
+            </p>
+          </div>
+
+          <br />
+
+          <p>
+            Regards,<br />
+            <strong>EarthConn Travels Team</strong>
+          </p>
+
+        </div>
       `,
     });
 
+    // ==========================
+    // Success Response
+    // ==========================
     return NextResponse.json({
       success: true,
       message: "Message sent successfully",
     });
-  } catch (error) {
-    console.error("Contact API error:", error);
+
+  } catch (error: any) {
+    console.error("RESEND ERROR:", error);
+
     return NextResponse.json(
-      { success: false, error: "Failed to send message" },
+      {
+        success: false,
+        error: error?.message || "Failed to send email",
+      },
       { status: 500 }
     );
   }

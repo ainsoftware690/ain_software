@@ -19,7 +19,7 @@ type Particle = {
 const slides = [
   {
     id: 0,
-    title: "AIN Revolutionize Data Warehousing and Reporting Across Industries?",
+    title: "Earthconn Revolutionize Data Warehousing and Reporting Across Industries?",
     image: caseImage2,
     link: "https://ainintel.com/case-studies/how-did-ain-revolutionize-data-warehousing-and-reporting-across-industries/",
     category: "Data Analytics",

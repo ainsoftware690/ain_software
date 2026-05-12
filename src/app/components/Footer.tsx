@@ -260,7 +260,7 @@ const Footer = () => {
                 <div className="space-y-3">
                   {[
                     { name: "Privacy Policy", href: "/privacy-policy" },
-                    { name: "Terms & Conditions", href: "/terms&conditions" }
+                    { name: "Terms And Conditions", href: "/terms-and-conditions" }
                   ].map((legal) => (
                     <Link
                       key={legal.name}
